@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}YoutubeAnalyzer {% endblock %}
+{% block head %} 
+{{ super() }}
+<style>
+    .loader {
+      display: none;
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+    
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+</style>
+
+{% endblock %}
+{% block content %}
+
+<div class="container px-1 mt-5">
+    
+    <div class="row gx-2 align-items-center">
+        <center>
+        <div class="col-lg-6 order-lg-2">
+            <div class="p-5"><img class="img-fluid" src="static\images\youtube.png" alt="..." /></div>
+        </div>
+    
+        
+        <div class="col-lg-8 order-lg-1">
+            
+            <div class="p-5">
+              <h1>Youtube Comment Analyzer</h1>
+            </div>
+        </div>
+        </center>
+    </div>
+</div>
+
+<section>
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="form-body">
+                <div class="row">
+                    <div class="form-holder">
+                        <div class="form-content">
+                            <div class="form-items">
+                                <h3>Fill below details </h3>
+                                <p>Currently only youtube comment section Analysis is available</p>
+                                <form class="requires-validation" method="post" action="yt_form">
+        
+                                    <div class="col-md-12">
+                                        <select class="form-select mt-3" name="platform" required>
+                                            <option selected disabled value="">Select Platform</option>
+                                            <option value="youtube">Youtube</option>
+                                            
+                                        </select>
+
+                                    </div>
+        
+                                    <div class="col-md-12 mt-1">
+                                        <select class="form-select mt-3" name="method" required>
+                                            <option selected disabled value="">Select method</option>
+                                            <option value="selenium">Selenium</option>
+                                           
+                                        </select>
+
+                                    </div>
+
+                                    <div class="col-md-12 mt-3"> 
+                                        <input class="form-control " type="text" name="url" placeholder="Enter youtube video link" required> 
+                                    </div>
+
+                                    <div class="col-md-12 mt-3"> 
+                                        <input class="form-control " type="number" name="total_comments" placeholder="Enter total number of comments" required> 
+                                    </div>
+        
+                                    <div class="form-button mt-3" style="text-align: center;">
+                                        <button id="submit" type="submit" class="btn btn-primary align-items-center">Analyze</button>
+                                    </div>
+                                    <br><br>
+                                    <center>
+                                    <div class="loader"></div>
+                                </center>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById("submit").addEventListener("click", function() {
+    // Show the loader when the button is clicked
+    document.querySelector(".loader").style.display = "block";
+});
+
+</script>
+
+<br><br>
+{% endblock %}
